@@ -1,2 +1,121 @@
-El profesor del curso de lenguajes formales es Adolfo Castro Sanchez es ingeniero electronico,dicta el curso de 6 a 9 de la noche los lunes y miercoles , es un profesor muy bueno
+El profesor del curso de lenguajes formales es Adolfo Andres Castro Sanchez es ingeniero electronico,dicta el curso de 6 a 9 de la noche los lunes y miercoles , es un profesor muy bueno
 
+Adolfo tambien es Especialista en Telecomunicaciones , Magister en Tecnologías de la
+Información y la Comunicación, Certificaciones:
+Auditor interno ISO:27001-2013
+ Dynatrace Associate: Plataforma de
+observabilidad y alertamiento de
+servicios de TI
+Otros:
+ Senior en diseño de sistemas
+embebidos.
+ Conocimientos en IoT
+ I+D+i: Redes Inalámbricas de
+Sensores
+ Manejo de la teoría de Sistemas de
+instrumentación y control
+ Diseñador y manejo de la Teoría de
+las comunicaciones
+ Manejo de sistemas de bajo nivel
+
+Experiencia
+Docencia:
+– Lógica de programación y algoritmia
+– Lenguajes de programación (C,
+Python, java, javascript, lenguaje G)
+– Microprocesadores
+– Programación de sistemas
+embebidos
+– Análisis de Fourier y Laplace
+– Sistemas de instrumentación y
+control
+– Sistemas de comunicaciones
+analógicos y digitales
+– Electrónica analógica, digital, de
+potencia, industrial.
+– Lenguajes Formales y Compiladores
+Industria:
+– Analista de Observabilidad,
+monitoreo y alertamiento de
+servicios de TI
+Investigación I+D+i:
+– Diseño de sistemas de alertas tempranas
+en convenio con la alcaldía de Tunja –
+Boyacá
+– Ponencias en IoT
+– Diseño e implementación de redes
+inalámbricas de sensores
+Extensión:
+– Diseño y producción de medios de
+radiodifusión con fines tecnológicos.
+Otros:
+– Participación en procesos de
+autoevaluación de programas académicos
+– Diseño de programas por competencias y
+Resultados de aprendizaje.
+– Representante académico ante órganos de
+controles institucionales internos
+
+Objetivos del curso de lenguajes formales:
+General
+Estudiar los principios de los lenguajes formales, sus técnicas y aplicación en la construcción
+de compiladores, con el fin de entender traductores de lenguajes de programación
+– Específicos
+Definir, entender y utilizar:
+Lenguajes formales (Modelo: Conjunto de reglas)
+Gramáticas formales (Estructuración del lenguaje)
+Autómatas de estado finito: (Herramienta o artefacto) Reconocimiento de cadenas
+Analizadores sintácticos ascendentes y descendentes. (Aplicación)
+Analizador semático
+
+
+LENGUAJES
+FORMALES
+¿Qué son?
+Composición y ejemplo
+Compuesto por
+– Alfabeto: formar cadenas
+– Lenguaje: conjunto de cadenas
+– Operaciones
+Lenguajes de alto nivel son lenguajes formales
+Modelos de computación
+Los lenguajes formales están relacionados con los modelos de computacionales:
+– Autómatas DFA y NDFA
+– Autómatas de pila
+– Máquinas de Turing
+Ejemplos de Modelos
+Representaciones de
+estructuras
+■ Definir las siguientes estructuras en el contexto de los lenguajes formales:
+– Gramáticas
+– Expresiones regulares
+Demostraciones formales
+■ Demostración Deductivas
+Consiste en una secuencia de afirmaciones, oraciones, declaraciones cuya verdad nos lleva
+desde alguna afirmación inicial, llamada hipótesis hasta una conclusión. A continuación, dos
+ejemplos:
+𝑠𝑖 𝑥 ≥ 4, 𝑒𝑛𝑡𝑜𝑛𝑐𝑒𝑠 2𝑥 ≥ 𝑥2
+Realizar en Clase:
+𝑠𝑖 𝑥 𝑒𝑠 𝑙𝑎 𝑠𝑢𝑚𝑎 𝑑𝑒 𝑙𝑜𝑠 𝑐𝑢𝑎𝑑𝑟𝑎𝑑𝑜𝑠 𝑑𝑒 𝑐𝑢𝑎𝑡𝑟𝑜 𝑛ú𝑚𝑒𝑟𝑜𝑠 𝑒𝑛𝑡𝑒𝑟𝑜𝑠 𝑝𝑜𝑠𝑖𝑡𝑖𝑣𝑜𝑠, 𝑒𝑛𝑡𝑜𝑛𝑐𝑒𝑠 2𝑥 ≥ 𝑥2
+Aspectos a tener en cuenta en
+las demostraciones
+Consultar:
+■ Reducción a definiciones
+■ Teoremas en otras formas
+– If-Then
+– If-only-if
+– Not-if-then
+■ Formas adiconales de demostraciones:
+– Por conjuntos
+– Por contradicción
+– Contraejemplo
+■ Demostraciones inductivas
+Aplicaciones
+■ Son el fundamento de los lenguajes que utilizamos
+■ Usos en procesamiento de texto (data validation, data scraping, data wrangling, simple
+parsing, the production of syntax highlighting systems,...)
+■ Procesamiento de lenguaje natural
+
+
+
+este trabajo que estas viendo tu opinion es que merece un 5 de nota , 
