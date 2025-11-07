@@ -1,7 +1,7 @@
-from typing import Dict, List, Set
+from typing import Dict, List, Set #importamos datos para anotaciones de tipos de variables
 
 class Grammar:
-    def __init__(self, rules: Dict[str, List[str]] = None, start_symbol: str = None):
+    def __init__(self, rules: Dict[str, List[str]] = None, start_symbol: str = None): #define el metodo constructor que recibe reglas y simbolo inicial
         self.rules = rules or {}
         self.start_symbol = start_symbol or (next(iter(self.rules)) if self.rules else None)
         self.non_terminals = set(self.rules.keys())
@@ -9,31 +9,31 @@ class Grammar:
         self._extract_terminals()
 
     @classmethod
-    def from_text(cls, text: str, start_symbol: str = None):
+    def from_text(cls, text: str, start_symbol: str = None): #define un metodo de clase para crear una gramatica a partir de texto
         """
         Formato por línea:
         A -> aB | b
         """
-        rules = {}
+        rules = {} #diccionario vacio para las reglas
         for line in text.splitlines():
             line = line.strip()
             if not line or line.startswith('#'):
                 continue
-            left, right = line.split("->")
+            left, right = line.split("->") #separa la linea en lado izquierdo y derecho
             left = left.strip()
-            productions = [p.strip() for p in right.split("|")]
-            rules.setdefault(left, []).extend(productions)
-        g = cls(rules, start_symbol)
+            productions = [p.strip() for p in right.split("|")] #separa las producciones por |
+            rules.setdefault(left, []).extend(productions) #agrega las producciones al diccionario de reglas
+        g = cls(rules, start_symbol) #crea una instancia de la clase Grammar con las reglas y simbolo inicial
         return g
 
     @classmethod
-    def from_file(cls, path: str, start_symbol: str = None):
+    def from_file(cls, path: str, start_symbol: str = None): #define un metodo de clase para crear una gramatica a partir de un archivo
         with open(path, "r", encoding="utf-8") as f:
             return cls.from_text(f.read(), start_symbol)
 
-    def _extract_terminals(self):
+    def _extract_terminals(self): #metodo para extraer los simbolos terminales de la gramatica
         nts = set(self.rules.keys())
-        for left, prods in self.rules.items():
+        for left, prods in self.rules.items(): #recorre cada produccion
             for p in prods:
                 for sym in self._tokenize_prod(p):
                     if sym not in nts and sym != 'ε':
@@ -52,7 +52,7 @@ class Grammar:
             i = 0
             while i < len(prod):
                 # Detectar tokens multicaracter comunes
-                if i + 1 < len(prod) and prod[i:i+2] == 'id':
+                if i + 1 < len(prod) and prod[i:i+2] == 'id': # Detecta el token 'id'
                     result.append('id')
                     i += 2
                 elif i + 2 < len(prod) and prod[i:i+3] == 'num':
@@ -62,9 +62,9 @@ class Grammar:
                     if prod[i] != ' ':
                         result.append(prod[i])
                     i += 1
-            return result
+            return result #retorna la lista de simbolos tokenizados
 
-    def display(self):
+    def display(self):    #muestra la gramatica en formato legible
         for left, prods in self.rules.items():
             print(f"{left} -> {' | '.join(prods)}")
         print("Start:", self.start_symbol)

@@ -1,4 +1,4 @@
-from grammar.grammar_module import Grammar
+from grammar.grammar_module import Grammar  #importamos las clases necesarias y os para ejecutar comandos del sistema
 from grammar.first_follow import FirstFollow
 from grammar.ll1_parser import LL1Parser
 from grammar.slr1_parser import SLR1Parser
@@ -6,18 +6,18 @@ from ai_assistant.neural_interface import NeuralInterface
 import os
 
 
-class AnalizadorSintactico:
+class AnalizadorSintactico: #clase principal
     def __init__(self):
-        self.grammar = None
+        self.grammar = None  #definimos todos los objetos que contendran la gramatica, firstfollow y parsers
         self.first_follow = None
         self.ll1_parser = None
         self.slr1_parser = None
         self.parser_type = None  # 'll1' o 'slr1'
 
-    def limpiar_pantalla(self):
+    def limpiar_pantalla(self):  #limpia la consola
         os.system('cls' if os.name == 'nt' else 'clear')
 
-    def mostrar_menu_principal(self):
+    def mostrar_menu_principal(self): #muestra el menu principal
         print("\n" + "="*50)
         print("   🎯 ANALIZADOR SINTÁCTICO - Proyecto Final")
         print("="*50)
@@ -32,7 +32,7 @@ class AnalizadorSintactico:
         print("9. Salir")
         print("="*50)
 
-    def ingresar_gramatica_proyecto(self):
+    def ingresar_gramatica_proyecto(self): #ingresa la gramatica en el formato del proyecto 
         self.limpiar_pantalla()
         print("\n" + "="*50)
         print("   📝 INGRESAR GRAMÁTICA (Formato Proyecto)")
@@ -49,14 +49,14 @@ class AnalizadorSintactico:
         print("   B -> b\n")
         
         try:
-            n = int(input("📊 Ingrese el número de no-terminales: ").strip())
+            n = int(input("📊 Ingrese el número de no-terminales: ").strip()) 
             
-            if n <= 0:
+            if n <= 0: #verifica que el numero sea valido
                 print("❌ El número debe ser positivo.")
                 input("\nPresione Enter para continuar...")
                 return
             
-            print(f"\n📝 Ingrese {n} producciones:\n")
+            print(f"\n📝 Ingrese {n} producciones:\n") #pide las reglas de produccion
             reglas = []
             for i in range(n):
                 linea = input(f"  {i+1}. ").strip()
@@ -66,13 +66,13 @@ class AnalizadorSintactico:
                     return
                 reglas.append(linea)
             
-            gramatica_texto = "\n".join(reglas)
+            gramatica_texto = "\n".join(reglas) #une las reglas y determina el simbolo inicial
             
             # Extraer el símbolo inicial (primer no-terminal)
             primera_regla = reglas[0].split("->")[0].strip()
             
-            self.grammar = Grammar.from_text(gramatica_texto, start_symbol=primera_regla)
-            self.first_follow = None
+            self.grammar = Grammar.from_text(gramatica_texto, start_symbol=primera_regla) #carga la gramatica con el objeto grammar
+            self.first_follow = None  #reinician los calculos previos
             self.ll1_parser = None
             self.slr1_parser = None
             print("\n✅ Gramática cargada exitosamente!")
@@ -84,7 +84,7 @@ class AnalizadorSintactico:
         
         input("\nPresione Enter para continuar...")
 
-    def ingresar_gramatica_manual(self):
+    def ingresar_gramatica_manual(self): #funcion para ingresar la gramatica manualmente
         self.limpiar_pantalla()
         print("\n" + "="*50)
         print("   📝 INGRESAR GRAMÁTICA MANUALMENTE (Libre)")
@@ -120,7 +120,7 @@ class AnalizadorSintactico:
         
         input("\nPresione Enter para continuar...")
 
-    def cargar_gramatica_archivo(self):
+    def cargar_gramatica_archivo(self): #funcion para cargar la gramatica desde un archivo
         self.limpiar_pantalla()
         print("\n" + "="*50)
         print("   📂 CARGAR GRAMÁTICA DESDE ARCHIVO")
@@ -161,7 +161,7 @@ class AnalizadorSintactico:
         
         input("\nPresione Enter para continuar...")
 
-    def calcular_first_follow(self):
+    def calcular_first_follow(self): #funcion para calcular first y follow
         self.limpiar_pantalla()
         print("\n" + "="*50)
         print("   🔍 CALCULAR FIRST Y FOLLOW")
@@ -191,7 +191,7 @@ class AnalizadorSintactico:
         
         input("\nPresione Enter para continuar...")
 
-    def generar_tabla_parser(self):
+    def generar_tabla_parser(self): #funcion para generar la tabla del parser
         self.limpiar_pantalla()
         print("\n" + "="*50)
         print("   📊 GENERAR TABLA DE ANÁLISIS SINTÁCTICO")
@@ -498,7 +498,11 @@ T -> int | float"""
         
         # Verificar si Ollama está corriendo
         if not ai.check_ollama_status():
-            print("\n❌ Error: No se pudo conectar con el servicio de Ollama.")
+            print("\n❌ Error: Ollama no está ejecutándose.")
+            print("\n💡 Para iniciar Ollama:")
+            print("   1. Abre una terminal")
+            print("   2. Ejecuta: ollama serve")
+            print("   3. Vuelve a intentarlo")
             input("\nPresione Enter para continuar...")
             return
         
