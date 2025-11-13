@@ -57,6 +57,95 @@ Resultados de aprendizaje.
 – Representante académico ante órganos de
 controles institucionales internos
 
+
+informacion del linkedin:
+Experiencia
+Gráfico ARUS Tecnología + Información + Conocimiento
+Analista de Gestión de Monitoreo
+ARUS Tecnología + Información + Conocimiento
+ene 2022 - actualidad 3 años 11 meses
+
+Medellín, Antioquia, Colombia
+
+Gráfico Fundación Universitaria Juan de Castellanos
+Personal docente a tiempo completo
+Fundación Universitaria Juan de Castellanos
+ene 2012 - dic 2021 10 años
+
+Tunja Boyacá
+
+Docente de tiempo de completo en programas académicos de Tecnología en Electrónica, Ingeniería Electrónica, Sistemas.
+
+Ingeniero de proyectos en desarrollo, investigación e Innovación.
+
+Producción de medios audiovisuales en radio y capacitaciones a la comunidad en general en temas afines a la ingenieria como parte de proyectos en extensión social
+
+Gráfico GOBUSINESSGO
+Analista de sistema
+GOBUSINESSGO
+jul 2020 - nov 2021 1 año 5 meses
+
+Bogotá, Distrito Capital, Colombia
+
+Consultor y auxiliar de analista para la implementación de software orientado a PYMES y emprendimiento independiente.
+
+
+Ingeniero de software incrustado
+Alcaldía Mayor de Tunja
+ago 2019 - jun 2021 1 año 11 meses
+
+Tunja y alrededores
+
+Desarrollo del proyecto "Sistemas de alertas tempranas en la cuenca alta del rio chicamocha jurisdicción del municipio de Tunja" convenio intersinstitucional entre la Fundación Universitaria Juan de Castellanos y la Alcaldia mayor de Tunja
+
+Gráfico Universidad Antonio Nariño
+Docente de Medio Tiempo
+Universidad Antonio Nariño
+jun 2015 - dic 2016 1 año 7 meses
+
+Tunja Boyaca
+
+Docente de las asignaturas de Procesamiento digital de señales, Electiva en Control, Señales y Sistemas, Comunicaciones analógicas, Comunicaciones digitales e instrumentación virtual.
+
+Acompañamiento y dirección de desarrollo de proyectos de grado: "Redes inalámbricas de sensores para el monitoreo y transporte público de la ciudad de Tunja"
+
+
+Consultor para Software académico
+Liceo Celestin Freinet Sincelejo
+may 2016 - jul 2016 3 mes
+
+Sincelejo Sucre
+
+Verificación de la implementación del Software de notas para el colegio Liceo Celestin Freinet de la ciudad de Sincelejo Sucre
+
+Gráfico Universidad de Sucre
+Docente catedrático
+Universidad de Sucre
+feb 2014 - jun 2015 1 año 5 meses
+
+Sincelejo Sucre
+
+Docente Gestión de la Información y Mediaciones virtuales
+
+Educación
+Gráfico Universidad Pontificia Bolivariana
+Universidad Pontificia Bolivariana
+Magíster en Tecnologías de la Información y la Comunicación Information Technology
+2014 - 2015
+Gráfico Universidad Piloto de Colombia
+Universidad Piloto de Colombia
+Especialista en Telecomunicaciones Electrical, Electronics and Communications Engineering
+2012 - 2013
+Gráfico Universidad Cooperativa de Colombia
+Universidad Cooperativa de Colombia
+Ingeniero Electrónico
+2004 - 2010
+Licencias y certificaciones
+Gráfico Dynatrace Associate
+Dynatrace Associate
+Dynatrace
+Expedición: abr 2023  Vencimiento: abr 2025
+
 Informacion del curso:
 
 Objetivos del curso de lenguajes formales:
@@ -1051,7 +1140,7 @@ TECNOLOGÍAS:
 - Python 3.x
 - Ollama 
 - Visual Studio Code
-- GitHub Copilot (asistencia en desarrollo)
+- Gemini
 
 
 
@@ -1073,7 +1162,7 @@ mantenimiento y extensión futura.
 ================================================================================
                         FIN DE LA DOCUMENTACIÓN
 ================================================================================
-Fecha de última actualización: Octubre 28, 2025
+
 Versión: 1.0
 
 

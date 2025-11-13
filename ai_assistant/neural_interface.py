@@ -1,13 +1,23 @@
-import requests
-import json
 import os
+from dotenv import load_dotenv
+import google.generativeai as genai
+
+# Cargar variables de entorno desde .env
+load_dotenv()
 
 class NeuralInterface:
-    def __init__(self, model_name="llama3:latest", course_content_path="data/course_content.txt"):
+    def __init__(self, api_key=None, model_name="gemini-2.5-flash", course_content_path="data/course_content.txt"):
+        # Configuración para Google AI (Gemini)
+        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
         self.model_name = model_name
-        self.api_url = "http://localhost:11434/api/generate"
+        
+        # Configurar la API key
+        if self.api_key:
+            genai.configure(api_key=self.api_key)
+        
         self.course_content = self._load_course_content(course_content_path)
         self.conversation_history = []
+        self.model = None
         
     def _load_course_content(self, path):
         #cargar dataset con contenido del curso del codigo y del proyecto
@@ -44,49 +54,46 @@ Primero que todo te memorizas todo el course_content que te di arriba. Luego sig
     def chat(self, user_message):
         #envia un mensaje al modelo y obtiene una respuesta
         try:
-            # Construir el prompt completo
-            if not self.conversation_history:
-                full_prompt = f"{self._create_system_prompt()}\n\nUsuario: {user_message}\nAsistente:"
-            else:
-                # Incluir historial de conversación
-                history = "\n".join([f"{msg['role']}: {msg['content']}" for msg in self.conversation_history])
-                full_prompt = f"{self._create_system_prompt()}\n\n{history}\nUsuario: {user_message}\nAsistente:"
+            if not self.api_key:
+                return "❌ Error: No se ha configurado la API key de Google AI. Usa GOOGLE_API_KEY como variable de entorno."
             
-            # Preparar el payload para Ollama
-            payload = {
-                "model": self.model_name,
-                "prompt": full_prompt,
-                "stream": False,
-                "options": {
-                    "temperature": 0.3,  # Más determinista, menos creativo
-                    "top_p": 0.9,
-                    "top_k": 40
-                }
-            }
+            # Inicializar el modelo si no existe
+            if not self.model:
+                self.model = genai.GenerativeModel(
+                    model_name=self.model_name,
+                    generation_config={
+                        "temperature": 0.3,
+                        "max_output_tokens": 1000,
+                        "top_p": 0.9
+                    },
+                    system_instruction=self._create_system_prompt()
+                )
             
-            # Hacer la petición a Ollama
-            response = requests.post(self.api_url, json=payload, timeout=60)
+            # Construir el prompt con historial
+            full_prompt = ""
             
-            if response.status_code == 200:
-                result = response.json()
-                ai_response = result.get('response', '').strip()
+            # Agregar historial de conversación
+            for msg in self.conversation_history:
+                role = "Usuario" if msg["role"] == "Usuario" else "Asistente"
+                full_prompt += f"{role}: {msg['content']}\n\n"
+            
+            # Agregar mensaje actual
+            full_prompt += f"Usuario: {user_message}\n\nAsistente:"
+            
+            # Generar respuesta
+            response = self.model.generate_content(full_prompt)
+            ai_response = response.text.strip()
+            
+            # Guardar en el historial
+            self.conversation_history.append({"role": "Usuario", "content": user_message})
+            self.conversation_history.append({"role": "Asistente", "content": ai_response})
+            
+            # Limitar historial a últimos 10 mensajes
+            if len(self.conversation_history) > 10:
+                self.conversation_history = self.conversation_history[-10:]
+            
+            return ai_response
                 
-                # Guardar en el historial
-                self.conversation_history.append({"role": "Usuario", "content": user_message})
-                self.conversation_history.append({"role": "Asistente", "content": ai_response})
-                
-                # Limitar historial a últimos 10 mensajes
-                if len(self.conversation_history) > 10:
-                    self.conversation_history = self.conversation_history[-10:]
-                
-                return ai_response
-            else:
-                return f"Error: No se pudo conectar con Ollama (código {response.status_code})"
-                
-        except requests.exceptions.ConnectionError:
-            return "❌ Error: No se pudo conectar con Ollama. Asegúrate de que Ollama esté ejecutándose."
-        except requests.exceptions.Timeout:
-            return "⏱️ Error: La solicitud ha excedido el tiempo de espera."
         except Exception as e:
             return f"❌ Error inesperado: {str(e)}"
     
@@ -94,10 +101,14 @@ Primero que todo te memorizas todo el course_content que te di arriba. Luego sig
         #limpia el historial de conversacion
         self.conversation_history = []
     
-    def check_ollama_status(self):
-        #verifica si ollama esta corriendo
+    def check_api_status(self):
+        #verifica si la API key es válida
         try:
-            response = requests.get("http://localhost:11434/api/tags", timeout=5)
-            return response.status_code == 200
+            if not self.api_key:
+                return False
+            # Intentar listar modelos para verificar la API key
+            genai.configure(api_key=self.api_key)
+            list(genai.list_models())
+            return True
         except:
             return False

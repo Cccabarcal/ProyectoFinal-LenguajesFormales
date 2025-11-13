@@ -496,13 +496,13 @@ T -> int | float"""
         print("\n⏳ Iniciando asistente IA...")
         ai = NeuralInterface()
         
-        # Verificar si Ollama está corriendo
-        if not ai.check_ollama_status():
-            print("\n❌ Error: Ollama no está ejecutándose.")
-            print("\n💡 Para iniciar Ollama:")
-            print("   1. Abre una terminal")
-            print("   2. Ejecuta: ollama serve")
-            print("   3. Vuelve a intentarlo")
+        # Verificar si la API está disponible
+        if not ai.check_api_status():
+            print("\n❌ Error: No se pudo conectar con Google AI API.")
+            print("\n💡 Verifica que:")
+            print("   1. Tu archivo .env tenga la API key correcta (GOOGLE_API_KEY)")
+            print("   2. Tengas conexión a internet")
+            print("   3. La API key sea válida en https://makersuite.google.com/app/apikey")
             input("\nPresione Enter para continuar...")
             return
         
@@ -527,7 +527,7 @@ T -> int | float"""
                     continue
                 
                 # Obtener respuesta del asistente
-                print("\n Asistente: ", end="", flush=True)
+                print("\n🤖 Asistente: ", end="", flush=True)
                 respuesta = ai.chat(pregunta)
                 print(respuesta)
                 
